@@ -1,0 +1,34 @@
+"""
+    def move(self, hole, player):
+        double_move = False
+        if player != 1 and player != 2:
+            raise ValueError("You can choose either player 1 or 2, but other value has ben input as a player")
+        if player == 1:
+            self.stones_left = self.p1.move_pit(hole, self.p2)
+            if self.stones_left == 666:
+                double_move = True
+            if self.stones_left > 0 and self.stones_left < 600:
+                self.stones_left = self.p2.move_pit_change_player(0, self.stones_left)
+                if self.stones_left > 0:
+                    self.stones_left = self.p1.move_pit_with(0, self.stones_left, self.p2)
+                    if self.stones_left == 666:
+                        double_move = True
+            if self.p1.is_game_over():
+                self.is_over(2)
+
+            if self.p2.is_game_over():
+                self.is_over(1)
+
+        else:
+            self.stones_left = self.p2.move_pit(hole, self.p1)
+            if self.stones_left == 666:
+                double_move = True
+            if self.stones_left > 0 and self.stones_left < 600:
+                self.stones_left = self.p1.move_pit_change_player(0, self.stones_left)
+                if self.stones_left > 0:
+                    self.stones_left = self.p2.move_pit_with(0, self.stones_left, self.p1)
+                    if self.stones_left == 666:
+                        double_move = True
+        return double_move
+
+"""
